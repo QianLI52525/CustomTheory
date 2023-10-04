@@ -4,10 +4,10 @@ import { parseBigNumber, BigNumber } from "../api/BigNumber";
 import { theory } from "../api/Theory";
 import { Utils } from "../api/Utils";
 
-var id = "recurrence_relation";
-var name = "Recurrence Relation";
-var description = "An implementation of the 'Recurrence Relation' theory from the game.";
-var authors = "Gilles-Philippe Paillé";
+var id = "M_Plus";
+var name = "M Plus";
+var description = "M is your currency, and its increase depends on itself.";
+var authors = "QianLi";
 var version = 1;
 
 var rhoN = BigNumber.ZERO;
@@ -19,8 +19,9 @@ var stringTickspeed = "\\text{{" + Localization.get("TheoryPanelTickspeed", "}}q
 var epsilon = BigNumber.from(1e-8);
 
 var currency;
-var q1, q2, c1, c2, c3, c4;
-var c1Exp, logTerm, c3Term, c4Term;
+//var q1, q2, c1, c2, c3, c4;
+//var c1Exp, logTerm, c3Term, c4Term;
+var lgMExp;
 
 var init = () => {
     currency = theory.createCurrency();
