@@ -4,18 +4,15 @@ import { BigNumber } from "./api/BigNumber";
 import { theory } from "./api/Theory";
 import { Utils } from "./api/Utils";
 
-var id = "my_custom_theory_id";
-var name = "My Custom Theory";
-var description = "A basic theory.";
-var authors = "Gilles-Philippe Paillé";
-var version = 1;
+var id = "m_plus";
+var name = "M Plus";
+var description = "MMMMMMMMMM+";
+var authors = "QianLi";
+var version = 0.1;
 
 var currency;
 var c1, c2;
 var c1Exp, c2Exp;
-
-var achievement1, achievement2;
-var chapter1, chapter2;
 
 var init = () => {
     currency = theory.createCurrency();
@@ -42,9 +39,9 @@ var init = () => {
 
     /////////////////////
     // Permanent Upgrades
-    theory.createPublicationUpgrade(0, currency, 1e10);
-    theory.createBuyAllUpgrade(1, currency, 1e13);
-    theory.createAutoBuyerUpgrade(2, currency, 1e30);
+    theory.createPublicationUpgrade(0, currency, 10);
+    theory.createBuyAllUpgrade(1, currency, 1000);
+    theory.createAutoBuyerUpgrade(2, currency, 1e8);
 
     ///////////////////////
     //// Milestone Upgrades
@@ -63,16 +60,6 @@ var init = () => {
         c2Exp.info = Localization.getUpgradeIncCustomExpInfo("c_2", "0.05");
         c2Exp.boughtOrRefunded = (_) => theory.invalidatePrimaryEquation();
     }
-    
-    /////////////////
-    //// Achievements
-    achievement1 = theory.createAchievement(0, "Achievement 1", "Description 1", () => c1.level > 1);
-    achievement2 = theory.createSecretAchievement(1, "Achievement 2", "Description 2", "Maybe you should buy two levels of c2?", () => c2.level > 1);
-
-    ///////////////////
-    //// Story chapters
-    chapter1 = theory.createStoryChapter(0, "My First Chapter", "This is line 1,\nand this is line 2.\n\nNice.", () => c1.level > 0);
-    chapter2 = theory.createStoryChapter(1, "My Second Chapter", "This is line 1 again,\nand this is line 2... again.\n\nNice again.", () => c2.level > 0);
 
     updateAvailability();
 }
